@@ -1,4 +1,4 @@
-"""student_management URL Configuration
+"""student URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -15,8 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from student_app.views import Home
+from student_app.views import *
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/',Home.as_view()),
+    path('', home, name='home'),
+
+    path('addDetails/', addDetails, name='addDetails'),
+    path('login/', loginPage, name='login'),
+    path('logout/', logoutPage, name='logout'),
+    path('register/', registerPage, name='register'),
+    path('deleteinput/', DeleteInputView.as_view()),
+    path('deleteinput/delete/',DeleteView.as_view()),
+    path('updateinput/',UpdateInputView.as_view()),
+    path('updateinput/update/',UpdateView.as_view()),
+    path('search/',searchpage,name='search'),
 ]
