@@ -1,0 +1,62 @@
+{% load static %}
+<style>
+  .greet{
+    font-size: 18px;
+    color: black;
+    margin-right: 20px;
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+
+    <ul class="navbar-nav">
+
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home' %}">Home</a>
+      </li>
+      <form class="d-flex" method=POST
+            action="{% url 'search' %}">
+          {%  csrf_token %}
+          <input class="form-control me-2" type="search" placeholder="Search"
+                 aria-label="Search" name="searched">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+
+      </form>
+      {% if request.user.is_staff %}
+
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'addDetails' %}">Add Details</a>
+      </li>
+      <li class="nav-item active">
+          <a class="nav-link navbar-right" href="./update/">click here to update</a><br>
+      </li>
+      <li class="nav-item active">
+          <a class="nav-link navbar-right" href="./delete/">click here to delete</a>>
+      </li></ul>
+
+
+      {% endif %}
+    <li class="nav-item ">
+        <a class="nav-link " href="{% url 'login' %}">Admin Login</a>
+    </li>
+
+
+  </div>
+
+  {% if request.user.is_staff %}
+  <span class="greet bg-success">Hello, {{request.user}}</span>
+  <span ><a  class="greet bg-success" href="{% url 'logout' %}">Logout</a></span>
+
+  {% endif %}
+
+
+</nav>
+<div><img style="background-size: cover; background-position: center; background-attachment: fixed; margin-bottom: -380px; height: 550px; width: 100%;"  src="{% static 'student-management-software.png' %}" alt="My image"></div>
+<div>
+    <center><h1 >Welcome To Student Management System</h1>
+    </center>
+</div>

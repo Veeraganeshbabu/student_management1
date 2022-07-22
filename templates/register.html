@@ -1,0 +1,12 @@
+{% extends 'Links.html' %}
+{% load static%}
+{% block content %}
+<div style="background-color: darkgray" class="container jumbotron">
+    <form method="POST" action="" >
+        {% csrf_token %}
+        {{form.as_p}}
+
+        <input class="btn btn-success" type="submit" value="Register Account">
+    </form>
+</div>
+{% endblock %}

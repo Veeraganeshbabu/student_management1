@@ -1,26 +1,43 @@
-{% load  static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="{% static 'home.css' %}"/>
-</head>
-<body>
-<div class="navbar">
-    <li><a class="active" href="#">Home</a>
-    <a href="#">Admin Login</a>
-    <a  href="#" >Student Details</a>
-        <a  href="#" >Student Results</a>
-    <a class="navbar-right" href="https://www.google.co.in"><span class="glyphicon glyphicon-log-out"></span>Exit</a>
-    <a class="navbar-right" href="#"><span class="glyphicon glyphicon-search"></span>Search</a>
-    </li>
-    <div><img style=" background-size: cover; background-position: center; background-attachment: fixed; margin-bottom: -380px; height: 700px; width: 100%;" src="{% static 'student-management-software.png' %}" alt="My image"></div>
-    <div><center><h1 style="margin-bottom: 300px;">Welcome To Student Management Application</h1></center></div>
+{% extends 'Links.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container ">
+
+<br><br>
+
+<div class="row">
+    <div class="col-md-9">
+        <h5 style="color: chocolate">Details:</h5>
+
+        <div class="card card-body">
+
+            <table style="background-color: darkgray" class="table table-sm">
+                <tr>
+                    <th>Student Id</th>
+                    <th>Student Name</th>
+                    <th>Batch Name</th>
+                    <th>Date Of Birth</th>
+                    <th>Graduation</th>
+                    <th>Year Of Pass</th>
+                    <th>EMail</th>
+
+                </tr>
+                {% for d in details %}
+                <tr>
+                    <td>{{d.StudentId}} </td>
+                    <td>{{d.StudentName}} </td>
+                    <td>{{d.BatchName}} </td>
+                    <td>{{d.DateOfBirth}} </td>
+                    <td>{{d.Graduation}} </td>
+                    <td>{{d.YearOfPass}} </td>
+                    <td>{{d.EMail}} </td>
+
+                </tr>
+                {% endfor %}
+            </table>
+
+        </div>
+    </div>
 </div>
-</body>
-</html>
+{% endblock %}
